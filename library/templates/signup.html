@@ -5,18 +5,18 @@
     <title></title>
   </head>
   <body>
-    <form  method="post">
+    <form  action="/add" method="post">
       {% csrf_token %}
-      <label for="">Roll Number</label>
+      <label for="sroll">Roll Number</label>
       <input type="text" name="sroll">
-      <br><br>
-      <label for="">Password</label>
+      <br>
+      <label for="oldpwd">Password</label>
       <input type="password" name="oldpwd">
-      <br><br>
-      <label for="">Confirm Password</label>
+      <br> 
+      <label for="spwd">Confirm Password</label>
       <input type="password" name="spwd">
-      <br><br>
-      <input type="submit" name="" value="Register">
+      <br>
+      <input type="submit" name="submit" >
     </form>
   </body>
 </html>

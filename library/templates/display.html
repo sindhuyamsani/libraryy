@@ -1,24 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <table border="1">
-      <tr>
-        <th>Book Name</th>
-        <th>Book Count</th>
-      </tr>
 
-      {% for b in books%}
-      <tr>
-        <td>{{b.sbookname}}</td>
-        <td>{{b.sbookcount}}</td>
-      </tr>
-      {% endfor %}
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
 
-    </table>
+<body>
+  <table border="1">
+    <tr>
+      <th>Book Name</th>
+      <th>Book Count</th>
+    </tr>
 
-  </body>
+    {% for b in books%}
+    <tr>
+      <td>{{b.sbookname}}</td>
+      <td>{{b.sbookcount}}</td>
+    </tr>
+    {% endfor %}
+
+  </table>
+  <h3>fill below details to request a book</h3>
+  <br>
+  <form action="requesting_book" method="POST">
+    {% csrf_token %}
+    <label for="book">enter book name</label>
+    <input type="text" id="sbookname" name="sbookname">
+    <br>
+    <button type="submit">submit</button>
+  </form>
+</body>
+
 </html>

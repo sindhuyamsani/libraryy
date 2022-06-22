@@ -5,15 +5,16 @@
     <title></title>
   </head>
   <body>
-    <form  method="post">
+    <form action="check" method="post">
       {% csrf_token %}
       <label for="">UserName:</label>
       <input type="text" name="sroll">
-      <br><br>
+      <br>
       <label for="">Password</label>
-      <input type="password" name="spwd" value="">
-      <br><br>
-      <input type="submit" name="" value="Submit">
+      <input type="password" name="spwd">
+      <br>
+      <input type="submit" name="submit" value="Submit">
+      <a href="/signup">signup</a>
     </form>
   </body>
 </html>

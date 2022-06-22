@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>ADD BOOKS</h1>
+    <form method="post">
+      {% csrf_token %}
+      <label for="">Book Name</label>
+      <input type="text" name="bname" value="">
+      <br><br>
+      <label for="">Number of books</label>
+      <input type="text" name="bcount" value="">
+      <br><br>
+      <input type="submit" name="" value="ADD BOOK">
+
+    </form>
+  </body>
+</html>

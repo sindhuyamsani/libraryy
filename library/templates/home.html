@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form  method="post">
+      {% csrf_token %}
+      <label for="">Roll Number</label>
+      <input type="text" name="sroll">
+      <br><br>
+      <label for="">Password</label>
+      <input type="password" name="oldpwd">
+      <br><br>
+      <label for="">Confirm Password</label>
+      <input type="password" name="spwd">
+      <br><br>
+      <input type="submit" name="" value="Register">
+    </form>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <table border="1">
+      <tr>
+        <th>Book Name</th>
+        <th>Book Count</th>
+      </tr>
+
+      {% for b in books%}
+      <tr>
+        <td>{{b.sbookname}}</td>
+        <td>{{b.sbookcount}}</td>
+      </tr>
+      {% endfor %}
+
+    </table>
+
+  </body>
+</html>

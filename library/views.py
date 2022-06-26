@@ -42,14 +42,16 @@ def check(request):
                 request.session['loggedin']=True
                 return render(request,"admin.html")
             else:
-                if(user.objects.get(Q(sroll=request.POST.get('sroll')) & Q(spwd=request.POST.get('spwd')))):
+                myobj=user.objects.get(Q(sroll=request.POST.get('sroll')))
+                if(request.POST.get('spwd')==myobj.spwd):
                     request.session['username']=request.POST.get('sroll')
                     request.session['type']='student'
                     request.session['loggedin']=True
-                    return render(request,"student.html",{'sroll':request.POST.get('sroll')})
+                    return render(request,"student.html",{'sroll':myobj.sroll})
                 else:
                     return HttpResponse('incorrect inputs')
     else:
+        request.session['loggedin']=False
         return render(request,"login.html")
 
 
@@ -89,11 +91,11 @@ def requested_books(request):
 def requesting_book(request):
     if request.method=='POST':
         trans_obj=transaction()
-        trans_obj.sroll=int(request.session['username'])
+        trans_obj.sroll=request.session['username']
         trans_obj.sbookname=request.POST.get('sbookname')
         trans_obj.sstatus='requested'
         trans_obj.save()
-        return render(request,"login.html")
+        return render(request,"student.html")
     else:
         messages.error(request,"Please enter correct credentials")
-        return render(request,"login.html")
+        return render(request,"student.html")

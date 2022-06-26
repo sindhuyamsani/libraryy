@@ -10,6 +10,6 @@ class books(models.Model):
     sbookcount=models.IntegerField()
 
 class transaction(models.Model):
-    sroll=models.IntegerField()
+    sroll=models.CharField(max_length=10)
     sbookname=models.CharField(max_length=10)
     sstatus=models.CharField(max_length=10)   #has values requested, accepted or rejected

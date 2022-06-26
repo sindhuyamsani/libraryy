@@ -23,6 +23,7 @@ urlpatterns = [
     path('check',views.check,name="check"),
     path('addbooks',views.addbooks,name="addbooks"),
     path('display',views.display,name="display"),
+    path('display',views.display,name="display"),
     path('requested_books',views.requested_books,name="requested_books"),
     path('requesting_book',views.requesting_book,name="requesting_book"),
     path('admin/', admin.site.urls),

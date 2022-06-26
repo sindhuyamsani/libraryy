@@ -72,12 +72,13 @@ def addbooks(request):
 def display(request):
     if(request.session['loggedin'] and request.session['username'] and request.session['type']=='student'):
         book_obj=books.objects.filter(sbookcount__gt=0)
-        return render(request,"display.html",{'books':book_obj})
+        return render(request,"display_student.html",{'books':book_obj})
     if(request.session['loggedin'] and request.session['username'] and request.session['type']=='admin'):
         book_obj=books.objects.all()
-        return render(request,"display.html",{'books':book_obj})
+        return render(request,"display_admin.html",{'books':book_obj})
     else:
         return render(request,"login.html")
+
 
 # for admin page wt all books are requested
 def requested_books(request):
@@ -95,7 +96,7 @@ def requesting_book(request):
         trans_obj.sbookname=request.POST.get('sbookname')
         trans_obj.sstatus='requested'
         trans_obj.save()
-        return render(request,"student.html")
+        return render(request,"student.html",{'book_added':"you requested the book : ",'book_name':request.POST.get('sbookname')})
     else:
         messages.error(request,"Please enter correct credentials")
         return render(request,"student.html")

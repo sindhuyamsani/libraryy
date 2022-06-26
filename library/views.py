@@ -40,7 +40,7 @@ def check(request):
                 request.session['username']='1000'
                 request.session['type']='admin'
                 request.session['loggedin']=True
-                return render(request,"admin.html")
+                return render(request,"admin_home.html")
             else:
                 myobj=user.objects.get(Q(sroll=request.POST.get('sroll')))
                 if(request.POST.get('spwd')==myobj.spwd):
@@ -64,7 +64,7 @@ def addbooks(request):
             books_obj.sbookcount=request.POST.get('bcount')
             books_obj.save()
             messages.success(request,"Book inserted successfully")
-            return render(request,"admin.html")
+            return render(request,"admin_home.html")
     else:
         return render(request,"addpage.html")
 
@@ -84,7 +84,7 @@ def display(request):
 def requested_books(request):
     if(request.session['loggedin'] and request.session['username'] and request.session['type']=='admin'):
         req_book_obj = transaction.objects.filter(Q(sstatus="requested"))
-        return render(request,"requested.hmtl",{'req':req_book_obj})
+        return render(request,"requested.html",{'req':req_book_obj})
     else:
         return render(request,"login.html")
 
@@ -100,3 +100,11 @@ def requesting_book(request):
     else:
         messages.error(request,"Please enter correct credentials")
         return render(request,"student.html")
+
+# when student wants to cehck the status of books
+def status_student(request):
+    if(request.session['loggedin'] and request.session['username'] and request.session['type']=='student'):
+        transobj=transaction.objects.filter(Q(sroll=request.session['username']))
+        return render(request,"student_status.html",{'trans':transobj})
+    else:
+        return render(request,"login.html")

@@ -7,20 +7,29 @@
     <title>Document</title>
 </head>
 <body>
+  
+    
     <table border="1">
         <tr>
           <th>Student Roll</th>
           <th>Book Name</th>
           <th>Book Count</th>
+          <th><input type="submit" value="B1"></th>
+          <th><input type="submit" value="B2"></th>
         </tr>
         {% for r in req%}
+  
         <tr>
           <td>{{r.sroll}}</td>
           <td>{{r.sbookname}}</td>
           <td>{{r.sstatus}}</td>
+          <td><a href="update/{{r.id}}">Submit</a></td>
+          <td><a href="decline/{{r.id}}">Decline</a></td>
         </tr>
         {% endfor %}
+
   
       </table>
+    
 </body>
 </html>

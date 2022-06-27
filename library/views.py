@@ -83,7 +83,9 @@ def display(request):
 # for admin page wt all books are requested
 def requested_books(request):
     if(request.session['loggedin'] and request.session['username'] and request.session['type']=='admin'):
-        req_book_obj = transaction.objects.filter(Q(sstatus="requested"))
+
+        req_book_obj = transaction.objects.all()
+        #req_book_obj = transaction.objects.filter(Q(sstatus="requested"))
         return render(request,"requested.html",{'req':req_book_obj})
     else:
         return render(request,"login.html")
@@ -108,3 +110,27 @@ def status_student(request):
         return render(request,"student_status.html",{'trans':transobj})
     else:
         return render(request,"login.html")
+
+
+def update(request,id):
+    if(request.session['loggedin'] and request.session['username'] and request.session['type']=='admin'):
+        transobj=transaction.objects.get(Q(id=id))
+        #MyModel.objects.get(name=name).update(field=value)
+        transaction.objects.filter(id=id).update(sstatus="accepted")
+        #transobj.update()
+        return render(request,"demo.html",{'id':1})
+    else:
+        return render(request,"login.html")
+
+    
+        
+def decline(request,id):
+    if(request.session['loggedin'] and request.session['username'] and request.session['type']=='admin'):
+        transobj=transaction.objects.get(Q(id=id))
+        #MyModel.objects.get(name=name).update(field=value)
+        transaction.objects.filter(id=id).update(sstatus="declined")
+        #transobj.update()
+        return render(request,"demo.html",{'id':1})
+    else:
+        return render(request,"login.html")
+    

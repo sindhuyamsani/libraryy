@@ -5,3 +5,4 @@ from library import models
 
 admin.site.register(models.user)
 admin.site.register(models.books)
+admin.site.register(models.transaction)

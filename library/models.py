@@ -8,3 +8,8 @@ class user(models.Model):
 class books(models.Model):
     sbookname=models.CharField(max_length=10)
     sbookcount=models.IntegerField()
+
+class transaction(models.Model):
+    sroll=models.CharField(max_length=10)
+    sbookname=models.CharField(max_length=10)
+    sstatus=models.CharField(max_length=10)   #has values requested, accepted or rejected
